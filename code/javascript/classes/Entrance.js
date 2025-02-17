@@ -1,3 +1,5 @@
+
+
 class Entrance
 {
     /**
@@ -54,3 +56,5 @@ class Entrance
         return this.connect_to;
     }
 }
+
+export default Entrance;

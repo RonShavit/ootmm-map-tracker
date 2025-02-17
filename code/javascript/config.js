@@ -1,5 +1,8 @@
+import Entrance from "code/javascript/classes/Entrance.js"
+
 function procces_config(path) {
     path = "config/config.txt";
+    let parts = new Array(0);
     fetch(path)
     .then((res) => res.text())
     .then((text) => {
@@ -9,11 +12,7 @@ function procces_config(path) {
         let line = lines[i].split(" ");
         if (line.length==4)
         {
-            let name = line[0];
-            let image_path = line[1];
-            let no_of_exits = parseInt(line[2]);
-            let exits = procces_array(line[3]);
-            print(name);
+            create_map_part(line,parts);
             
         }
       }
@@ -39,6 +38,16 @@ function procces_array(arr_text)
     return to_return;
 }
 
+function create_map_part(line, parts)
+{
+    let name = line[0];
+    let image_path = line[1];
+    let no_of_exits = parseInt(line[2]);
+    let exits = procces_array(line[3]);
+    print(name);
+    parts.push(new Map_part(image_path,no_of_exits,exits,name));
+}
 
-procces_config("config\config.txt")
+
+procces_config(create_map_part("test_map map/no_bitches.jpg 2 [(10,10,0)|(100,20,400)]",new Array))
 
