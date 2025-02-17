@@ -1,6 +1,6 @@
 
 
-class graph
+class Graph
 {
     constructor() {
         this.vertacies = new Map();

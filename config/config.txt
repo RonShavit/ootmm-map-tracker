@@ -1,1 +1,2 @@
-# map_name image_path map_config_path
+# map_name image_path no_of_exits [(exit_x,exit_y,exit_angle)|(exit_x,exit_y, exit_angle)|...]
+test_map map/no_bitches.jpg 2 [(10,10,0)|(100,20,400)]
