@@ -1,36 +1,70 @@
 
-
+import Map_part from "./map_part";
 class Graph
 {
-    constructor() {
-        this.vertacies = new Map();
-        this.directed = false;
-
-    }
-
     /**
-     * adds map part v1 to the graph with no neighbours
-     * @param {map_part} vertex a map_part vertex
+     * Creates a new graph with no parts
      */
-    add_vertex(vertex)
-    {
-        this.vertacies.set(vertex,new Array(0));
-        a = [1,3].map;
-        
-    }
+ constructor()
+ {
+    this.Map_parts = new Array();
+    this.directed = false;
+ }   
 
-    /**
-     * Adds an edge between v1 and v2. If thegraph id defined as non directed, adds an edge between v2 and v1 aswell
-     * @param {*} v1 first vertex, always is head of new edge to v2
-     * @param {*} v2 second vertex, is head of new edge to v1 if the graph is non directed
-     */
-    add_edge(v1,v2)
+ /**
+  * Sets if the graph is directed
+  * @param {Boolean} directed true <=> graph is directed
+  */
+ set_directed(directed)
+ {
+    this.directed = directed;
+ }
+
+ /**
+  * Adds given map part to the graph
+  * @param {Map_part} new_part part to add
+  */
+ add_part(new_part)
+ {
+    this.Map_parts.push(new_part);
+ }
+
+ /**
+  * removes item from the graph
+  * @param {Map_part} to_remove part to remove
+  */
+ remove_part(to_remove)
+ {
+    to_remove.remove();
+    let index = -1;
+    for (let i=0;i<this.Map_parts.length;i++)
     {
-        this.vertacies.get(v1).push(v2);
-        if (!this.directed)
+        if (this.Map_parts[i]==to_remove)
         {
-            this.vertacies.get(v2).push(v1);
+            index= i;
         }
     }
-    
+    this.Map_parts.splice(index,1);
+ }
+
+
+ /**
+  * Creates a connection from entrance no_1 of part1 to exit no_2 of part2
+  * If graph is not directed creates a connection in opposite direction
+  * @param {Map_part} part1 always origin
+  * @param {Map_part} part2 always destination
+  * @param {number} no_1 exit of part1
+  * @param {number} no_2 exit of part2
+  */
+ set_connection(part1,part2,no_1,no_2)
+ {
+
+    part1.set_connection(no_1,no_2,part2);
+    if (!this.directed)
+    {
+        part2.set_connection(no_2,no_1,part1);
+    }
+ }
+
+ 
 }
