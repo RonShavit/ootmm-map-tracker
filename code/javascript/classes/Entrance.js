@@ -14,6 +14,7 @@ class Entrance
         this.y = y;
         this.angle = this.adjust_angle(angle);
         this.connect_to = null;
+        this.connect_from = null;
     }
 
     /**
@@ -41,10 +42,30 @@ class Entrance
      */
     set_connect_to(other)
     {
-        if (other instanceof Entrance)
+        if (this.connect_to!=null)
+        {
+            this.connect_to.set_connect_from(null);
+        }
+        if (other instanceof Entrance || other == null)
         {
             this.connect_to = other;
+            if (other instanceof Entrance)
+            {
+                other.set_connect_from(this);
+            }
         }
+    }
+
+    set_connect_from(other)
+    {
+        if (this.connect_from!=null)
+        {
+            this.connect_from.set_connect_to(null);
+        }
+        if (other instanceof Entrance || other == null)
+            {
+                this.connect_to = other;
+            }
     }
 
     /**
@@ -54,6 +75,11 @@ class Entrance
     get_connect_to()
     {
         return this.connect_to;
+    }
+
+    get_connect_from()
+    {
+        return this.connect_from;
     }
 }
 

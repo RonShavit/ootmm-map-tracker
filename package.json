@@ -1,0 +1,20 @@
+{
+  "name": "ootmm_map_tracker",
+  "version": "1.0.0",
+  "description": "map dracker for entrance randomizer",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RonShavit/ootmm-map-tracker.git"
+  },
+  "author": "Ron Shavit",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RonShavit/ootmm-map-tracker/issues"
+  },
+  "homepage": "https://github.com/RonShavit/ootmm-map-tracker#readme"
+}

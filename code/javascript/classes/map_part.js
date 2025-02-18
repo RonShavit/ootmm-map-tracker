@@ -1,3 +1,5 @@
+import Entrance from "./Entrance";
+
 class Map_part
 {
     /**
@@ -13,4 +15,41 @@ class Map_part
         this.no_of_exits = no_of_exits;
         this.exits = exits;
     }
+
+    /**
+     * removes all connextions from and to this map part
+     */
+    remove()
+    {
+        for (let i=0;i<this.exits.length;i++)
+        {
+            this.exits[i].set_connect_to(null);
+            this.exits[i].set_connect_from(null);
+        }
+    }
+
+    /**
+     * Sets a connection between entrance nmber entrance_no and exit number exit_no of other
+     * @param {number} entrance_no number of connecting entrance of this
+     * @param {number} exit_no number of connecting exit of other
+     * @param {Map_part} other map part to connect to
+     */
+    set_connection(entrance_no, exit_no, other)
+    {
+        this.exits[entrance_no].set_connect_to(other.exits[exit_no])
+    }
+
+
+    /**
+     * Removes connection starting at entrance entrance_no
+     * @param {number} entrance_no entrance o disconnect
+     */
+    remove_connection(entrance_no)
+    {
+        this.exits[entrance_no].set_connect_to(null);
+    }
+
+
 }
+
+export default Map_part;
